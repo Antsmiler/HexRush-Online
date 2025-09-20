@@ -8,16 +8,29 @@ class HexRushScene extends Phaser.Scene {
     super('HexRush');
   }
   preload() {
-    // Load assets
+      // Load assets
+      console.log('Phaser preload called');
   }
   create() {
-    // Setup game board, player, etc.
-    socket.on('gameState', (state) => {
-      // Update game state
-    });
+        // Setup game board, player, etc.
+        console.log('Phaser create called');
+        // Set background color explicitly
+        this.cameras.main.setBackgroundColor('#222244');
+        // Add a visible debug rectangle
+        const graphics = this.add.graphics();
+        graphics.fillStyle(0xff0000, 1);
+        graphics.fillRect(200, 150, 400, 300);
+        this.add.text(400, 300, 'Hello HexRush!', {
+          font: '32px Arial',
+          color: '#ffffff',
+        }).setOrigin(0.5);
+        socket.on('gameState', (state) => {
+          // Update game state
+        });
   }
   update() {
-    // Game loop logic
+      // Game loop logic
+      console.log('Phaser update called');
   }
 }
 

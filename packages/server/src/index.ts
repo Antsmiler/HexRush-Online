@@ -4,6 +4,8 @@ import { Server as SocketIOServer } from 'socket.io';
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 import Redis from 'ioredis';
+// Type-only import to help TypeScript find types
+import type {} from 'ioredis';
 
 const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/hexrush';
 const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379';

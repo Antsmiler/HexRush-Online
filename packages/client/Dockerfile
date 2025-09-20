@@ -1,9 +1,14 @@
-# Client Dockerfile
-FROM node:20-alpine
+
+# Production client Dockerfile using nginx
+FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
-EXPOSE 8080
-CMD ["npm", "run", "preview"]
+
+FROM nginx:alpine
+WORKDIR /usr/share/nginx/html
+COPY --from=builder /app/dist .
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
