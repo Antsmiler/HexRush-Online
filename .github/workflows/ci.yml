@@ -29,7 +29,10 @@ jobs:
       - name: Run unit tests
         run: npx vitest run
       - name: Run e2e tests
-        run: npx start-server-and-test "npm run dev" http://localhost "cd tests/e2e && npx cypress run"
+        run: |
+          npm install --save-dev concurrently start-server-and-test
+          npx concurrently -k -s first -n client,server "npm run dev --workspace=client" "npm run dev --workspace=server" &
+          npx start-server-and-test http://localhost "cd tests/e2e && npx cypress run"
       - name: Lint
         run: npm run lint
       - name: Format check
