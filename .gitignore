@@ -1,0 +1,38 @@
+# Node
+node_modules/
+dist/
+.env
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Docker
+*.local
+*.pid
+*.seed
+*.bak
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+/packages/*/dist/
+/packages/*/node_modules/
+/tests/*/dist/
+/tests/*/node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+# Coverage
+coverage/
+
+# Cypress
+cypress/screenshots/
+cypress/videos/
+
+# Misc
+infra/mongo-data/

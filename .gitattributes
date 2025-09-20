@@ -1,0 +1,15 @@
+# Ensure text files use LF
+* text=auto
+*.js text
+*.ts text
+*.json text
+*.md text
+*.yml text
+*.yaml text
+*.dockerignore text
+*.gitignore text
+*.gitattributes text
+*.html text
+*.css text
+*.scss text
+*.env text
