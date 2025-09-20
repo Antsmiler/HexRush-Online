@@ -12,7 +12,7 @@ const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379';
 const JWT_SECRET = process.env.JWT_SECRET || 'supersecret';
 
 mongoose.connect(MONGO_URL);
-const redis = new Redis(REDIS_URL);
+// const redis = new Redis(REDIS_URL);
 
 const app = express();
 const server = http.createServer(app);
@@ -31,7 +31,7 @@ app.use((req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1];
   if (!token) return next();
   try {
-    (req as any).user = jwt.verify(token, JWT_SECRET);
+    (req as unknown).user = jwt.verify(token, JWT_SECRET);
   } catch {
     // ignore invalid token
   }

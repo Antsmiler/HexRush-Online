@@ -24,7 +24,7 @@ class HexRushScene extends Phaser.Scene {
           font: '32px Arial',
           color: '#ffffff',
         }).setOrigin(0.5);
-        socket.on('gameState', (state) => {
+        socket.on('gameState', () => {
           // Update game state
         });
   }

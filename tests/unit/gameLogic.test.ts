@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { PlayerSchema, MatchSchema, GameStateSchema } from '../../packages/shared/src/types';
+import { PlayerSchema } from '../../packages/shared/src/types';
 
 describe('Player schema', () => {
   it('validates a correct player', () => {
