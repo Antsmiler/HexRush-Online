@@ -31,7 +31,7 @@ app.use((req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1];
   if (!token) return next();
   try {
-    (req as unknown).user = jwt.verify(token, JWT_SECRET);
+  (req as any).user = jwt.verify(token, JWT_SECRET);
   } catch {
     // ignore invalid token
   }
