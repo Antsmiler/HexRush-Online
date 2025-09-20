@@ -3,12 +3,9 @@ import http from 'http';
 import { Server as SocketIOServer } from 'socket.io';
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
-import Redis from 'ioredis';
-// Type-only import to help TypeScript find types
-import type {} from 'ioredis';
 
 const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/hexrush';
-const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379';
+// const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379';
 const JWT_SECRET = process.env.JWT_SECRET || 'supersecret';
 
 mongoose.connect(MONGO_URL);
@@ -31,7 +28,7 @@ app.use((req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1];
   if (!token) return next();
   try {
-  (req as any).user = jwt.verify(token, JWT_SECRET);
+  (req as { user?: string | jwt.JwtPayload }).user = jwt.verify(token, JWT_SECRET);
   } catch {
     // ignore invalid token
   }
