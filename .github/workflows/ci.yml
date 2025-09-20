@@ -31,8 +31,8 @@ jobs:
       - name: Run e2e tests
         run: |
           npm install --save-dev concurrently start-server-and-test
-          npx concurrently -k -s first -n client,server "npm run dev --workspace=client" "npm run dev --workspace=server" &
-          npx start-server-and-test http://localhost "cd tests/e2e && npx cypress run"
+          npx concurrently -k -s first -n client,server "npm run dev --prefix packages/client" "npm run dev --prefix packages/server" &
+          npx start-server-and-test http://localhost:5173 "cd tests/e2e && npx cypress run"
       - name: Lint
         run: npm run lint
       - name: Format check
